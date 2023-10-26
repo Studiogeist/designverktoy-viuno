@@ -155,50 +155,53 @@
 </div>
 
 <script>
-const textInput = document.getElementById('text-input');
-const iconInput = document.getElementById('icon-input');
-const viunoHeading = document.getElementById('viuno-heading');
-const viunoIcon = document.getElementById('viuno-icon');
-const exportButton = document.getElementById('export-button');
-const exportSizeInput = document.getElementById('export-size'); // Add this line
+    const textInput = document.getElementById('text-input');
+    const iconInput = document.getElementById('icon-input');
+    const viunoContainer = document.querySelector('.viuno-container');
+    const viunoHeading = document.getElementById('viuno-heading');
+    const viunoIcon = document.getElementById('viuno-icon');
+    const exportButton = document.getElementById('export-button');
+    const exportSizeInput = document.getElementById('export-size');
 
-textInput.addEventListener('input', () => {
-    viunoHeading.textContent = textInput.value;
-});
-
-iconInput.addEventListener('change', () => {
-    viunoIcon.src = iconInput.value;
-});
-
-exportButton.addEventListener('click', () => {
-    let exportWidth, exportHeight;
-
-    if (exportSizeInput.value === '1x1') {
-        exportWidth = 1080;
-        exportHeight = 1080;
-    } else if (exportSizeInput.value === '9x16') {
-        exportWidth = 1080; // Width remains 1080
-        exportHeight = 1920; // Height set to 1920 for 9x16
-    }
-
-    // Adjust the container's height based on the selected export size
-    viunoContainer.style.width = exportWidth + 'px';
-    viunoContainer.style.height = exportHeight + 'px';
-
-    html2canvas(viunoContainer).then(canvas => {
-        const dataURL = canvas.toDataURL('image/png');
-        const a = document.createElement('a');
-        a.href = dataURL;
-        a.download = 'viuno.png';
-        a.click();
+    textInput.addEventListener('input', () => {
+        viunoHeading.textContent = textInput.value;
     });
 
-    // Reset the container's size back to 1080x1080 after exporting
-    viunoContainer.style.width = '1080px';
-    viunoContainer.style.height = '1080px';
-});
+    iconInput.addEventListener('change', () => {
+        viunoIcon.src = iconInput.value;
+    });
 
+    exportButton.addEventListener('click', () => {
+        let exportWidth, exportHeight;
 
+        if (exportSizeInput.value === '1x1') {
+            exportWidth = 1080;
+            exportHeight = 1080;
+        } else if (exportSizeInput.value === '9x16') {
+            exportWidth = 1080; // Width remains 1080
+            exportHeight = 1920; // Height set to 1920 for 9x16
+        }
+
+        // Adjust the container's size based on the selected export size
+        viunoContainer.style.width = exportWidth + 'px';
+        viunoContainer.style.height = exportHeight + 'px';
+
+        // Wait for the layout to update before capturing the container
+        setTimeout(() => {
+            html2canvas(viunoContainer).then(canvas => {
+                const dataURL = canvas.toDataURL('image/png');
+                const a = document.createElement('a');
+                a.href = dataURL;
+                a.download = 'viuno.png';
+                a.click();
+            });
+
+            // Reset the container's size back to 1080x1080 after exporting
+            viunoContainer.style.width = '1080px';
+            viunoContainer.style.height = '1080px';
+        }, 100);
+    });
 </script>
 </body>
 </html>
+
