@@ -43,7 +43,7 @@
         }
 
         .viuno-ikon img {
-            height: 120px;
+            height: 160px;
         }
 
         .viuno-ikon {
@@ -326,17 +326,17 @@ h2 {
 
     <label class="input-label" for="icon-input">Ikon</label>
     <select id="icon-input" class="input-field">
-<option value="catering.svg">Catering</option>
-<option value="ved.svg">Ved</option>
-        <option value="bilpleie.svg">Bilpleie</option>
-<option value="buss.svg">Buss</option>
-<option value="frakt.svg">Frakt</option>
-<option value="mekanikk-og-reparasjon.svg">Mekanikk og Reparasjon</option>
-<option value="pakking-og-montering.svg">Pakking og Montering</option>
-<option value="produktbestilling.svg">Produktbestilling</option>
-<option value="utegruppa.svg">Utegruppa</option>
-<option value="utleie.svg">Utleie</option>
-<option value="vaskeri.svg">Vaskeri</option>
+<option value="assets\ikoner\catering_sand.png">Catering</option>
+<option value="assets\ikoner\ved_sand.png">Ved</option>
+<option value="assets\ikoner\bilpleie_sand.png">Bilpleie</option>
+<option value="assets\ikoner\buss_sand.png">Buss</option>
+<option value="assets\ikoner\frakt_sand.png">Frakt</option>
+<option value="assets\ikoner\mekanikk-og-reparasjon_sand.png">Mekanikk og Reparasjon</option>
+<option value="assets\ikoner\pakking-og-montering_sand.png">Pakking og Montering</option>
+<option value="assets\ikoner\produktbestilling_sand.png">Produktbestilling</option>
+<option value="assets\ikoner\utegruppa_sand.png">Utegruppa</option>
+<option value="assets\ikoner\utleie_sand.png">Utleie</option>
+<option value="assets\ikoner\vaskeri_sand.png">Vaskeri</option>
     </select>
 <label class="input-label" for="export-size">Størrelse</label>
 <select id="export-size" class="input-field">
@@ -366,7 +366,7 @@ h2 {
     <div class=viuno-bunn>
     <img src="assets/logo-black.svg" id="viuno-logo">
     <div class="viuno-ikon">
-        <img src="catering.svg" alt="Catering Image" id="viuno-icon">
+        <img src="assets\ikoner\catering_sand.png" id="viuno-icon">
     </div>
 </div>
 </div>
@@ -393,7 +393,7 @@ exportSizeInput.addEventListener('change', () => {
 
     // Reset font size and icon size to their original values
     viunoHeading.style.fontSize = '60px';
-    viunoIcon.style.height = '120px';
+    viunoIcon.style.height = '160px';
 
     // Update the viuno-container size based on the selected option
     if (selectedSize === '1x1') {
@@ -406,7 +406,7 @@ exportSizeInput.addEventListener('change', () => {
         // Adjust font size and icon size for 9x16 size
         viunoHeading.style.fontSize = '78px';
         viunoHeading.style.lineHeight = '84px';
-        viunoIcon.style.height = '175px';
+        viunoIcon.style.height = '225px';
     }
 });
 
