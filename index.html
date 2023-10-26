@@ -51,16 +51,16 @@
 
         .side-panel {
             display: flex;
-            background: var(--sand);
+            background: white;
             color: var(--blue);
-            gap: 5px;
-            padding: 50px;
+            gap: 5px;;
             width: 500px;
             flex-direction: column;
         }
 
         .input-label {
             font-size: 18px;
+           padding-bottom: 10px;
         }
 
         .input-field {
@@ -86,7 +86,7 @@
             color: #212529;
             background-color: #fff;
             background-clip: padding-box;
-            border: 1px solid #ced4da;
+            border: 1px solid darkgrey;
             transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
         }
 
@@ -124,11 +124,39 @@
             color: var(--blue);
         }
 
+        .logo-wrapper img {
+            height: 25px;
+        }
+
+        .logo-wrapper {
+    display: flex;
+    padding: 25px 50px 25px 50px;
+    gap: 10px;
+    border-bottom: 1px solid lightgrey;
+    flex-direction: column;
+    align-items: flex-start;
+        }
+
+        .valg-wrapper {
+             padding: 50px;
+    display: flex;
+    flex-direction: column;
+        }
+
+
+        h2 {
+            margin: 0;
+        }
+
     </style>
 </head>
 <body>
 <div class="side-panel">
-    <h2>Viuno designverktøy</h2>
+    <div class="logo-wrapper">
+    <img src="assets/logo.svg" id="viuno-logo">
+        <h2>Designverktøy</h2>
+</div>
+<div class="valg-wrapper">
     <label class="input-label" for="text-input">Salgstekst</label>
     <input type="text" id="text-input" class="input-field" placeholder="Overtidsmat, møtemat eller kickoff? Prøv vår catering">
 
@@ -145,8 +173,6 @@
 <option value="utegruppa.svg">Utegruppa</option>
 <option value="utleie.svg">Utleie</option>
 <option value="vaskeri.svg">Vaskeri</option>
-
-
     </select>
 <label class="input-label" for="export-size">Størrelse</label>
 <select id="export-size" class="input-field">
@@ -155,6 +181,7 @@
 </select>
 
     <button id="export-button">Eksporter (PNG)</button>
+</div>
 </div>
 
 <div class="viuno-container">
