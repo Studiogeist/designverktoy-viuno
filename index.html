@@ -173,29 +173,31 @@ iconInput.addEventListener('change', () => {
 exportButton.addEventListener('click', () => {
     let exportWidth, exportHeight;
 
-    // Determine the export size based on the selected option
     if (exportSizeInput.value === '1x1') {
         exportWidth = 1080;
         exportHeight = 1080;
     } else if (exportSizeInput.value === '9x16') {
-        exportWidth = 1080;
-        exportHeight = 1920;
+        exportWidth = 1080; // Width remains 1080
+        exportHeight = 1920; // Height set to 1920 for 9x16
     }
 
-    // Use the determined export size
-    html2canvas(document.querySelector('.viuno-container'), { width: exportWidth, height: exportHeight }).then(canvas => {
-        // Convert the canvas to a data URL
-        const dataURL = canvas.toDataURL('image/png');
+    // Adjust the container's height based on the selected export size
+    viunoContainer.style.width = exportWidth + 'px';
+    viunoContainer.style.height = exportHeight + 'px';
 
-        // Create a download link
+    html2canvas(viunoContainer).then(canvas => {
+        const dataURL = canvas.toDataURL('image/png');
         const a = document.createElement('a');
         a.href = dataURL;
         a.download = 'viuno.png';
-
-        // Trigger a click event on the download link
         a.click();
     });
+
+    // Reset the container's size back to 1080x1080 after exporting
+    viunoContainer.style.width = '1080px';
+    viunoContainer.style.height = '1080px';
 });
+
 
 </script>
 </body>
