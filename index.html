@@ -211,7 +211,7 @@
     display: inline-block;
     width: 50px;
     height: 50px;
-    border: 2px solid var(--blue); /* Initial border color matches "blue" class */
+    border: 3px solid var(--blue); /* Initial border color matches "blue" class */
     border-radius: 500px;
     margin-right: 10px;
     margin-bottom: 40px;
@@ -228,12 +228,32 @@
 #sand-swatch + label::before {
     background-color: var(--sand);
     color: var(--blue);
+        border-color: var(--oransje);
 }
 
 #oransje-swatch + label::before {
     background-color: var(--oransje);
     color: var(--sand);
 }
+
+.viuno-bunn {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+        align-items: flex-end;
+    }
+
+.viuno-bunn img#viuno-logo {
+height: 40px;
+    fill: blue;
+    color: red;
+}
+
+.viuno-bunn svg {
+    fill: blue;
+    color: red;
+}
+
 
     </style>
 
@@ -275,9 +295,6 @@
 
         <input type="radio" name="swatch" value="oransje" id="oransje-swatch">
         <label for="oransje-swatch" class="swatch-color oransje-swatch"></label>
-
-        <input type="radio" name="swatch" value="sand" id="sand-swatch">
-        <label for="sand-swatch" class="swatch-color sand-swatch"></label>
     </div>
 </div>
 
@@ -288,9 +305,12 @@
 <div class="grafikk-wrapper">
 <div class="viuno-container">
     <h1 class="viuno-heading" id="viuno-heading">Overtidsmat, møtemat eller kickoff? Prøv vår catering</h1>
+    <div class=viuno-bunn>
+    <img src="assets/logo-black.svg" id="viuno-logo">
     <div class="viuno-ikon">
         <img src="catering.svg" alt="Catering Image" id="viuno-icon">
     </div>
+</div>
 </div>
 </div>
 <script>
@@ -350,21 +370,29 @@ exportSizeInput.addEventListener('change', () => {
         viunoContainer.style.width = exportWidth + 'px';
         viunoContainer.style.height = exportHeight + 'px';
 
-        // Wait for the layout to update before capturing the container
-        setTimeout(() => {
-            html2canvas(viunoContainer).then(canvas => {
-                const dataURL = canvas.toDataURL('image/png');
-                const a = document.createElement('a');
-                a.href = dataURL;
-                a.download = 'viuno.png';
-                a.click();
-            });
+    // Wait for the layout to update before capturing the container
+    setTimeout(() => {
+        html2canvas(viunoContainer).then(canvas => {
+            const dataURL = canvas.toDataURL('image/png');
+
+            // Get the input from "salgstekst"
+            const salgstekst = textInput.value;
+
+            // Generate a unique file name based on "salgstekst"
+            const fileName = `${salgstekst}_viuno.png`;
+
+            // Create an anchor element for downloading
+            const a = document.getElementById('download-link');
+            a.href = dataURL;
+            a.download = fileName;
+            a.click();
 
             // Reset the container's size back to 1080x1080 after exporting
             viunoContainer.style.width = '540px';
             viunoContainer.style.height = '540px';
         }, 100);
     });
+});
 
 
 </script>
