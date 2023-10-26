@@ -26,6 +26,7 @@
     background: var(--blue);
     width: 540px;
     height: 540px;
+    color: var(--sand);
 }
 
         .viuno-heading {
@@ -34,7 +35,6 @@
     font-weight: 300 !important;
     font-size: 60px !important;
     line-height: 75px !important;
-    color: var(--sand);
     word-wrap: break-word;
     width: 500px;
         }
@@ -128,6 +128,7 @@
 
         .logo-wrapper img {
             height: 25px;
+            color: inherit;
         }
 
         .logo-wrapper {
@@ -155,6 +156,81 @@
     justify-content: center;
     width: 100%;
     }
+
+
+    /* Swatch color styles */
+.swatch-options {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.swatch-color {
+    width: 30px;
+    height: 30px;
+    border: 2px solid white;
+    border-radius: 50%;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.viuno-container.oransje {
+    background-color: var(--oransje);
+    color: var(--sand);
+    border-top: 10px solid var(--blue);
+}
+
+.viuno-container.blue {
+    background-color: var(--blue);
+    color: var(--sand);
+}
+
+.viuno-container.sand {
+    background-color: var(--sand);
+    color: var(--blue);
+}
+
+
+/* Common text color for the entire container */
+.viuno-container .viuno-heading {
+    color: inherit;
+}
+
+#blue-swatch, #sand-swatch, #oransje-swatch {
+    display: none;
+}
+
+#blue-swatch + label::before,
+#sand-swatch + label::before,
+#oransje-swatch + label::before {
+    content: "";
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border: 2px solid var(--blue); /* Initial border color matches "blue" class */
+    border-radius: 500px;
+    margin-right: 10px;
+    margin-bottom: 40px;
+    vertical-align: middle;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+#blue-swatch + label::before {
+    background-color: var(--blue);
+    color: var(--sand);
+    border-color: var(--oransje);
+}
+
+#sand-swatch + label::before {
+    background-color: var(--sand);
+    color: var(--blue);
+}
+
+#oransje-swatch + label::before {
+    background-color: var(--oransje);
+    color: var(--sand);
+}
+
     </style>
 
 </head>
@@ -187,6 +263,20 @@
     <option value="1x1">Innlegg (1080x1080)</option>
     <option value="9x16">Story (1080x1920)</option>
 </select>
+<div class="swatch-options">
+    <label class="input-label">Variant</label>
+    <div>
+        <input type="radio" name="swatch" value="blue" id="blue-swatch" checked> <!-- Added "checked" attribute -->
+        <label for="blue-swatch" class="swatch-color blue-swatch"></label>
+
+        <input type="radio" name="swatch" value="oransje" id="oransje-swatch">
+        <label for="oransje-swatch" class="swatch-color oransje-swatch"></label>
+
+        <input type="radio" name="swatch" value="sand" id="sand-swatch">
+        <label for="sand-swatch" class="swatch-color sand-swatch"></label>
+    </div>
+</div>
+
 
     <button id="export-button">Eksporter (PNG)</button>
 </div>
@@ -200,6 +290,15 @@
 </div>
 </div>
 <script>
+// Add an event listener for swatch selection
+document.querySelectorAll('input[name="swatch"]').forEach(input => {
+    input.addEventListener('change', () => {
+        const selectedSwatch = document.querySelector('input[name="swatch"]:checked').value;
+        viunoContainer.className = `viuno-container ${selectedSwatch}`;
+    });
+});
+
+
     const textInput = document.getElementById('text-input');
     const iconInput = document.getElementById('icon-input');
     const viunoContainer = document.querySelector('.viuno-container');
@@ -246,6 +345,8 @@
             viunoContainer.style.height = '540px';
         }, 100);
     });
+
+
 </script>
 </body>
 </html>
