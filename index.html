@@ -220,11 +220,11 @@
         let exportWidth, exportHeight;
 
         if (exportSizeInput.value === '1x1') {
-            exportWidth = 1080;
-            exportHeight = 1080;
+            exportWidth = 540;
+            exportHeight = 540;
         } else if (exportSizeInput.value === '9x16') {
-            exportWidth = 1080; // Width remains 1080
-            exportHeight = 1920; // Height set to 1920 for 9x16
+            exportWidth = 540; // Width remains 1080
+            exportHeight = 960; // Height set to 1920 for 9x16
         }
 
         // Adjust the container's size based on the selected export size
@@ -242,8 +242,8 @@
             });
 
             // Reset the container's size back to 1080x1080 after exporting
-            viunoContainer.style.width = '1080px';
-            viunoContainer.style.height = '1080px';
+            viunoContainer.style.width = '540px';
+            viunoContainer.style.height = '540px';
         }, 100);
     });
 </script>
