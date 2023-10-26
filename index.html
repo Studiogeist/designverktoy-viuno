@@ -125,7 +125,6 @@ input:focus {
     </div>
 </div>
 
-
 <script>
     const textInput = document.getElementById('text-input');
     const iconInput = document.getElementById('icon-input');
@@ -143,13 +142,19 @@ input:focus {
 
     exportButton.addEventListener('click', () => {
         html2canvas(document.querySelector('.viuno-container')).then(canvas => {
-            const exportedImage = new Image();
-            exportedImage.src = canvas.toDataURL('image/png');
-            document.body.appendChild(exportedImage);
+            // Convert the canvas to a data URL
+            const dataURL = canvas.toDataURL('image/png');
+
+            // Create a download link
+            const a = document.createElement('a');
+            a.href = dataURL;
+            a.download = 'viuno.png';
+
+            // Trigger a click event on the download link
+            a.click();
         });
     });
 </script>
-
 
 </body>
 </html>
