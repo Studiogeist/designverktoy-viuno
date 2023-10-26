@@ -370,29 +370,21 @@ exportSizeInput.addEventListener('change', () => {
         viunoContainer.style.width = exportWidth + 'px';
         viunoContainer.style.height = exportHeight + 'px';
 
-    // Wait for the layout to update before capturing the container
-    setTimeout(() => {
-        html2canvas(viunoContainer).then(canvas => {
-            const dataURL = canvas.toDataURL('image/png');
-
-            // Get the input from "salgstekst"
-            const salgstekst = textInput.value;
-
-            // Generate a unique file name based on "salgstekst"
-            const fileName = `${salgstekst}_viuno.png`;
-
-            // Create an anchor element for downloading
-            const a = document.getElementById('download-link');
-            a.href = dataURL;
-            a.download = fileName;
-            a.click();
+        // Wait for the layout to update before capturing the container
+        setTimeout(() => {
+            html2canvas(viunoContainer).then(canvas => {
+                const dataURL = canvas.toDataURL('image/png');
+                const a = document.createElement('a');
+                a.href = dataURL;
+                a.download = 'viuno.png';
+                a.click();
+            });
 
             // Reset the container's size back to 1080x1080 after exporting
             viunoContainer.style.width = '540px';
             viunoContainer.style.height = '540px';
         }, 100);
     });
-});
 
 
 </script>
