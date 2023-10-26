@@ -137,6 +137,11 @@
         <option value="catering.svg">Catering</option>
         <option value="ved.svg">Ved</option>
     </select>
+<label class="input-label" for="export-size">Export Size</label>
+<select id="export-size" class="input-field">
+    <option value="1x1">Innlegg (1080x1080)</option>
+    <option value="9x16">Story (1080x1920)</option>
+</select>
 
     <button id="export-button">Eksporter (PNG)</button>
 </div>
@@ -149,34 +154,48 @@
 </div>
 
 <script>
-    const textInput = document.getElementById('text-input');
-    const iconInput = document.getElementById('icon-input');
-    const viunoHeading = document.getElementById('viuno-heading');
-    const viunoIcon = document.getElementById('viuno-icon');
-    const exportButton = document.getElementById('export-button');
+const textInput = document.getElementById('text-input');
+const iconInput = document.getElementById('icon-input');
+const viunoHeading = document.getElementById('viuno-heading');
+const viunoIcon = document.getElementById('viuno-icon');
+const exportButton = document.getElementById('export-button');
+const exportSizeInput = document.getElementById('export-size'); // Add this line
 
-    textInput.addEventListener('input', () => {
-        viunoHeading.textContent = textInput.value;
+textInput.addEventListener('input', () => {
+    viunoHeading.textContent = textInput.value;
+});
+
+iconInput.addEventListener('change', () => {
+    viunoIcon.src = iconInput.value;
+});
+
+exportButton.addEventListener('click', () => {
+    let exportWidth, exportHeight;
+
+    // Determine the export size based on the selected option
+    if (exportSizeInput.value === '1x1') {
+        exportWidth = 1080;
+        exportHeight = 1080;
+    } else if (exportSizeInput.value === '9x16') {
+        exportWidth = 1080;
+        exportHeight = 1920;
+    }
+
+    // Use the determined export size
+    html2canvas(document.querySelector('.viuno-container'), { width: exportWidth, height: exportHeight }).then(canvas => {
+        // Convert the canvas to a data URL
+        const dataURL = canvas.toDataURL('image/png');
+
+        // Create a download link
+        const a = document.createElement('a');
+        a.href = dataURL;
+        a.download = 'viuno.png';
+
+        // Trigger a click event on the download link
+        a.click();
     });
+});
 
-    iconInput.addEventListener('change', () => {
-        viunoIcon.src = iconInput.value;
-    });
-
-    exportButton.addEventListener('click', () => {
-        html2canvas(document.querySelector('.viuno-container')).then(canvas => {
-            // Convert the canvas to a data URL
-            const dataURL = canvas.toDataURL('image/png');
-
-            // Create a download link
-            const a = document.createElement('a');
-            a.href = dataURL;
-            a.download = 'viuno.png';
-
-            // Trigger a click event on the download link
-            a.click();
-        });
-    });
 </script>
 </body>
 </html>
