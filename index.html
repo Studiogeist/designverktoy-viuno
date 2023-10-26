@@ -299,13 +299,27 @@ document.querySelectorAll('input[name="swatch"]').forEach(input => {
 });
 
 
-    const textInput = document.getElementById('text-input');
-    const iconInput = document.getElementById('icon-input');
-    const viunoContainer = document.querySelector('.viuno-container');
-    const viunoHeading = document.getElementById('viuno-heading');
-    const viunoIcon = document.getElementById('viuno-icon');
-    const exportButton = document.getElementById('export-button');
-    const exportSizeInput = document.getElementById('export-size');
+const textInput = document.getElementById('text-input');
+const iconInput = document.getElementById('icon-input');
+const viunoContainer = document.querySelector('.viuno-container');
+const viunoHeading = document.getElementById('viuno-heading');
+const viunoIcon = document.getElementById('viuno-icon');
+const exportButton = document.getElementById('export-button');
+const exportSizeInput = document.getElementById('export-size');
+
+// Add the event listener for export-size here
+exportSizeInput.addEventListener('change', () => {
+    const selectedSize = exportSizeInput.value;
+
+    // Update the viuno-container size based on the selected option
+    if (selectedSize === '1x1') {
+        viunoContainer.style.width = '540px';
+        viunoContainer.style.height = '540px';
+    } else if (selectedSize === '9x16') {
+        viunoContainer.style.width = '540px';
+        viunoContainer.style.height = '960px';
+    }
+});
 
     textInput.addEventListener('input', () => {
         viunoHeading.textContent = textInput.value;
@@ -314,6 +328,8 @@ document.querySelectorAll('input[name="swatch"]').forEach(input => {
     iconInput.addEventListener('change', () => {
         viunoIcon.src = iconInput.value;
     });
+
+    
 
     exportButton.addEventListener('click', () => {
         let exportWidth, exportHeight;
