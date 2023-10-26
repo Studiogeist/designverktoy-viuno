@@ -17,30 +17,30 @@
         }
 
         .viuno-container {
-            display: flex;
-            border-top: 10px solid var(--oransje);
-            padding: 100px;
-            flex-direction: column;
-            align-items: flex-start;
-            justify-content: space-between;
-            background: var(--blue);
-            width: 1080px;
-            height: 1080px;
-        }
+    display: flex;
+    border-top: 10px solid var(--oransje);
+    padding: 50px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    background: var(--blue);
+    width: 540px;
+    height: 540px;
+}
 
         .viuno-heading {
-            font-family: 'Poppins';
-            font-style: normal !important;
-            font-weight: 300 !important;
-            font-size: 100px !important;
-            line-height: 120px !important;
-            color: var(--sand);
-            word-wrap: break-word; /* Allow text to wrap */
-            width: 800px;
+    font-family: 'Poppins';
+    font-style: normal !important;
+    font-weight: 300 !important;
+    font-size: 60px !important;
+    line-height: 75px !important;
+    color: var(--sand);
+    word-wrap: break-word;
+    width: 500px;
         }
 
         .viuno-ikon img {
-            height: 300px;
+            height: 120px;
         }
 
         .viuno-ikon {
@@ -56,6 +56,7 @@
             gap: 5px;;
             width: 500px;
             flex-direction: column;
+            height: 100vh;
         }
 
         .input-label {
@@ -75,6 +76,7 @@
         body {
             display: flex;
             margin: 0;
+            background-color: lightgrey;
         }
 
         /* Create a CSS class to apply common styles to form elements */
@@ -147,8 +149,14 @@
         h2 {
             margin: 0;
         }
-
+.grafikk-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    }
     </style>
+
 </head>
 <body>
 <div class="side-panel">
@@ -183,14 +191,14 @@
     <button id="export-button">Eksporter (PNG)</button>
 </div>
 </div>
-
+<div class="grafikk-wrapper">
 <div class="viuno-container">
     <h1 class="viuno-heading" id="viuno-heading">Overtidsmat, møtemat eller kickoff? Prøv vår catering</h1>
     <div class="viuno-ikon">
         <img src="catering.svg" alt="Catering Image" id="viuno-icon">
     </div>
 </div>
-
+</div>
 <script>
     const textInput = document.getElementById('text-input');
     const iconInput = document.getElementById('icon-input');
