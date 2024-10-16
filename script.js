@@ -54,41 +54,38 @@ exportSizeInput.addEventListener('change', () => {
             viunoIcon.src = iconInput.value;
         });
 
-        exportButton.addEventListener('click', () => {
-            let exportWidth, exportHeight;
+exportButton.addEventListener('click', () => {
+    let exportWidth, exportHeight;
 
-            if (exportSizeInput.value === '1x1') {
-                exportWidth = 540;
-                exportHeight = 540;
-            } else if (exportSizeInput.value === '9x16') {
-                exportWidth = 540;
-                exportHeight = 960;
-            }
+    if (exportSizeInput.value === '1x1') {
+        exportWidth = 540;
+        exportHeight = 540;
+    } else if (exportSizeInput.value === '9x16') {
+        exportWidth = 540;
+        exportHeight = 960;
+    }
 
-            // Adjust the container's size based on the selected export size
-            viunoContainer.style.width = exportWidth + 'px';
-            viunoContainer.style.height = exportHeight + 'px';
+    // Adjust the container's size based on the selected export size
+    viunoContainer.style.width = exportWidth + 'px';
+    viunoContainer.style.height = exportHeight + 'px';
 
-            // Wait for the layout to update before capturing the container
-            setTimeout(() => {
-                html2canvas(viunoContainer).then(canvas => {
-                    const dataURL = canvas.toDataURL('image/png');
-                    const a = document.createElement('a');
-                    a.href = dataURL;
-                    a.download = 'viuno.png';
-                    a.click();
-                });
-
-
-            }, 300);
+    // Wait for the layout to update before capturing the container
+    setTimeout(() => {
+        html2canvas(viunoContainer, { useCORS: true }).then(canvas => {
+            const dataURL = canvas.toDataURL('image/png');
+            const a = document.createElement('a');
+            a.href = dataURL;
+            a.download = 'viuno.png';
+            a.click();
+        }).catch(error => {
+            console.error("Error capturing the canvas: ", error);
         });
 
+    }, 300);
+});
 
-        const backgroundUploadInput = document.getElementById('background-upload');
-const customUploadBtn = document.querySelector('.custom-upload-btn');
-const fileNameDisplay = document.createElement('div');
-fileNameDisplay.classList.add('file-name');
-customUploadBtn.after(fileNameDisplay); // Insert the file name display after the upload button
+// Make sure background images are loaded
+const backgroundUploadInput = document.getElementById('background-upload');
 
 backgroundUploadInput.addEventListener('change', (event) => {
     const file = event.target.files[0];
@@ -101,12 +98,15 @@ backgroundUploadInput.addEventListener('change', (event) => {
     const reader = new FileReader();
     
     reader.onload = (e) => {
-        // Check if e.target.result is a valid image URL
         const imageUrl = e.target.result;
         if (imageUrl) {
-            viunoContainer.style.backgroundImage = `url(${imageUrl})`;
-            viunoContainer.style.backgroundSize = 'cover';
-            viunoContainer.style.backgroundPosition = 'center';
+            const img = new Image();
+            img.src = imageUrl;
+            img.onload = () => {
+                viunoContainer.style.backgroundImage = `url(${imageUrl})`;
+                viunoContainer.style.backgroundSize = 'cover';
+                viunoContainer.style.backgroundPosition = 'center';
+            };
         } else {
             console.error("FileReader did not return a valid image URL.");
         }
@@ -118,4 +118,3 @@ backgroundUploadInput.addEventListener('change', (event) => {
 
     reader.readAsDataURL(file);
 });
-
