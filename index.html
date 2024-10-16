@@ -89,5 +89,73 @@
     </div>
 </body>
 <script src="script.js"></script>
+<script>
+    const exportButton = document.getElementById('export-button');
+    const viunoContainer = document.querySelector('.viuno-container');
+    const backgroundUploadInput = document.getElementById('background-upload');
+    const exportSizeInput = document.getElementById('export-size');
+
+    // Image upload handling
+    backgroundUploadInput.addEventListener('change', (event) => {
+        const file = event.target.files[0];
+
+        if (!file) {
+            console.error("No file selected.");
+            return;
+        }
+
+        const reader = new FileReader();
+
+        reader.onload = (e) => {
+            // Use the uploaded image as background
+            const imageUrl = e.target.result;
+            if (imageUrl) {
+                viunoContainer.style.backgroundImage = `url(${imageUrl})`;
+                viunoContainer.style.backgroundSize = 'cover';
+                viunoContainer.style.backgroundPosition = 'center';
+            } else {
+                console.error("FileReader did not return a valid image URL.");
+            }
+        };
+
+        reader.onerror = (e) => {
+            console.error("Error reading file: ", e);
+        };
+
+        reader.readAsDataURL(file);
+    });
+
+    // Export functionality
+    exportButton.addEventListener('click', () => {
+        let exportWidth, exportHeight;
+
+        if (exportSizeInput.value === '1x1') {
+            exportWidth = 540;
+            exportHeight = 540;
+        } else if (exportSizeInput.value === '9x16') {
+            exportWidth = 540;
+            exportHeight = 960;
+        }
+
+        // Adjust the container's size based on the selected export size
+        viunoContainer.style.width = exportWidth + 'px';
+        viunoContainer.style.height = exportHeight + 'px';
+
+        // Wait for the layout to update before capturing the container
+        setTimeout(() => {
+            html2canvas(viunoContainer).then(canvas => {
+                const dataURL = canvas.toDataURL('image/png');
+                const a = document.createElement('a');
+                a.href = dataURL;
+                a.download = 'viuno.png';
+                document.body.appendChild(a); // Append the link to the body
+                a.click();
+                document.body.removeChild(a); // Remove the link from the body after clicking
+            }).catch(err => {
+                console.error("Error capturing canvas: ", err);
+            });
+        }, 300);
+    });
+</script>
 
 </html>
