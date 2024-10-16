@@ -82,24 +82,3 @@ exportSizeInput.addEventListener('change', () => {
 
             }, 100);
         });
-
-        const backgroundUploadInput = document.getElementById('background-upload');
-
-// Event listener for background image upload
-backgroundUploadInput.addEventListener('change', (event) => {
-    const file = event.target.files[0];
-    
-    if (file) {
-        const reader = new FileReader();
-
-        reader.onload = (e) => {
-            viunoContainer.style.backgroundImage = `url(${e.target.result})`;
-            viunoContainer.style.backgroundSize = 'cover'; // Make sure the image covers the entire container
-            viunoContainer.style.backgroundPosition = 'center'; // Center the image
-        };
-
-        reader.readAsDataURL(file); // Convert the uploaded file to a data URL
-    }
-});
-
-
