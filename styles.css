@@ -49,7 +49,7 @@
   background: white;
   color: var(--blue);
   gap: 5px;
-  width: 350px;
+  width: 450px;
   flex-direction: column;
   min-height: 100vh;
 }
@@ -349,4 +349,12 @@ h2 {
   .valg-wrapper {
     padding: 25px;
   }
+}
+
+input[type="text"],
+input[type="file"],
+select {
+  -webkit-appearance: none; /* Remove default styling */
+  -moz-appearance: none;
+  appearance: none;
 }
