@@ -170,3 +170,6 @@ toggleIconCheckbox.addEventListener('change', () => {
         viunoIcon.style.opacity = '0';  // Set opacity to 0 to hide
     }
 });
+
+
+
