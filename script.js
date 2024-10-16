@@ -80,7 +80,7 @@ exportSizeInput.addEventListener('change', () => {
                 });
 
 
-            }, 100);
+            }, 300);
         });
 
 
