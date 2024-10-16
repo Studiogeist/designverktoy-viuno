@@ -87,6 +87,38 @@ exportButton.addEventListener('click', () => {
 // Make sure background images are loaded
 const backgroundUploadInput = document.getElementById('background-upload');
 
+backgroundUploadInput.addEventListener('change', function() {
+    const file = this.files[0];
+
+    if (!file) {
+        console.error("No file selected.");
+        return;
+    }
+
+    const reader = new FileReader();
+
+    reader.onload = (e) => {
+        const imageUrl = e.target.result;
+        if (imageUrl) {
+            const img = new Image();
+            img.src = imageUrl;
+            img.onload = () => {
+                viunoContainer.style.backgroundImage = `url(${imageUrl})`;
+                viunoContainer.style.backgroundSize = 'cover';
+                viunoContainer.style.backgroundPosition = 'center';
+            };
+        } else {
+            console.error("FileReader did not return a valid image URL.");
+        }
+    };
+
+    reader.onerror = (e) => {
+        console.error("Error reading file: ", e);
+    };
+
+    reader.readAsDataURL(file);
+});
+
 backgroundUploadInput.addEventListener('change', (event) => {
     const file = event.target.files[0];
 
