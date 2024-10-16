@@ -90,27 +90,32 @@ const fileNameDisplay = document.createElement('div');
 fileNameDisplay.classList.add('file-name');
 customUploadBtn.after(fileNameDisplay); // Insert the file name display after the upload button
 
-// Event listener for background image upload
 backgroundUploadInput.addEventListener('change', (event) => {
     const file = event.target.files[0];
 
-    if (file) {
-        // Update the file name display
-        fileNameDisplay.textContent = `Selected file: ${file.name}`;
-        fileNameDisplay.classList.add('visible'); // Make it visible
-
-        const reader = new FileReader();
-
-        reader.onload = (e) => {
-            viunoContainer.style.backgroundImage = `url(${e.target.result})`;
-            viunoContainer.style.backgroundSize = 'cover'; // Make sure the image covers the entire container
-            viunoContainer.style.backgroundPosition = 'center'; // Center the image
-        };
-
-        reader.readAsDataURL(file); // Convert the uploaded file to a data URL
-    } else {
-        // Reset the file name display if no file is selected
-        fileNameDisplay.textContent = '';
-        fileNameDisplay.classList.remove('visible');
+    if (!file) {
+        console.error("No file selected.");
+        return;
     }
+
+    const reader = new FileReader();
+    
+    reader.onload = (e) => {
+        // Check if e.target.result is a valid image URL
+        const imageUrl = e.target.result;
+        if (imageUrl) {
+            viunoContainer.style.backgroundImage = `url(${imageUrl})`;
+            viunoContainer.style.backgroundSize = 'cover';
+            viunoContainer.style.backgroundPosition = 'center';
+        } else {
+            console.error("FileReader did not return a valid image URL.");
+        }
+    };
+
+    reader.onerror = (e) => {
+        console.error("Error reading file: ", e);
+    };
+
+    reader.readAsDataURL(file);
 });
+
