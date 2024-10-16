@@ -14,6 +14,7 @@
         const viunoIcon = document.getElementById('viuno-icon');
         const exportButton = document.getElementById('export-button');
         const exportSizeInput = document.getElementById('export-size');
+        
 
 exportSizeInput.addEventListener('change', () => {
     const selectedSize = exportSizeInput.value;
@@ -170,6 +171,5 @@ toggleIconCheckbox.addEventListener('change', () => {
         viunoIcon.style.opacity = '0';  // Set opacity to 0 to hide
     }
 });
-
 
 
