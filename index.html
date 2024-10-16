@@ -1,454 +1,88 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Viuno | Designverktøy</title>
-        <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="shortcut icon" href="assets/favicon.ico">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.4/html2canvas.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=block" rel="stylesheet">
-    <style>
-        :root {
-            --oransje: #D14900;
-            --grey: #444444;
-            --blue: #35435A;
-            --sand: #F1DFBC;
-            --lyssand: #F6F2E9;
-        }
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=block"
+        rel="stylesheet">
+    <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
 
-        * {
-            font-family: Poppins;
-        }
-
-        .viuno-container {
-    display: flex;
-    border-top: 10px solid var(--oransje);
-    padding: 50px;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-between;
-    background: var(--blue);
-    width: 540px;
-    height: 540px;
-    color: var(--sand);
-    overflow: hidden;
-}
-
-        .viuno-heading {
-    font-family: 'Poppins';
-    font-style: normal !important;
-    font-weight: 300 !important;
-    font-size: 60px;
-    line-height: 75px;
-    word-wrap: break-word;
-    width: 500px;
-        }
-
-        .viuno-ikon img {
-            height: 160px;
-        }
-
-        .viuno-ikon {
-            display: flex;
-            width: 100%;
-            justify-content: flex-end;
-        }
-
-        .side-panel {
-            display: flex;
-            background: white;
-            color: var(--blue);
-            gap: 5px;;
-            width: 750px;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        .input-label {
-            font-size: 18px;
-           padding-bottom: 10px;
-        }
-
-        .input-field {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 30px;
-        }
-
-        #text-input {
-            width: -webkit-fill-available;
-        }
-        body {
-            display: flex;
-            margin: 0;
-            background-color: lightgrey;
-        }
-
-        /* Create a CSS class to apply common styles to form elements */
-        input, .input-field {
-            padding: 20px;
-            font-size: 16px;
-            font-weight: 400;
-            line-height: 1.5;
-            color: #212529;
-            background-color: #fff;
-            background-clip: padding-box;
-            border: 1px solid darkgrey;
-            transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-        }
-
-        /* Add styles for when the element is focused */
-        input:focus {
-            color: #212529;
-            background-color: #fff;
-            border-color: #86b7fe;
-            outline: 0;
-            box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
-        }
-
-        button {
-            padding: 20px;
-            background-color: var(--oransje);
-            border: 0px;
-            font-size: 16px;
-            color: white;
-            cursor: pointer;
-            transition: 0.4s;
-            outline: 2px solid transparent;
-        }
-
-        button:hover {
-box-shadow: -3px 10px 53px -20px rgba(209,73,0,0.88);
--webkit-box-shadow: -3px 10px 53px -20px rgba(209,73,0,0.88);
--moz-box-shadow: -3px 10px 53px -20px rgba(209,73,0,0.88);
-            cursor: pointer;
-            transition: 0.4s;
-            outline: 2px solid black;
-        }
-
-        h2 {
-            font-family: 'Poppins';
-            font-style: normal !important;
-            font-weight: 500 !important;
-            font-size: 32px !important;
-            line-height: 40px !important;
-            color: var(--blue);
-        }
-
-        .logo-wrapper img {
-            height: 25px;
-            color: inherit;
-        }
-
-        .logo-wrapper {
-    display: flex;
-    padding: 50px;
-    gap: 10px;
-    border-bottom: 1px solid lightgrey;
-    flex-direction: column;
-    align-items: flex-start;
-        }
-
-        .valg-wrapper {
-             padding: 50px;
-    display: flex;
-    flex-direction: column;
-        }
-
-
-        h2 {
-            margin: 0;
-        }
-.grafikk-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    }
-
-
-    /* Swatch color styles */
-.swatch-options {
-    display: flex;
-    flex-direction: column;
-}
-
-.swatch-color {
-    width: 30px;
-    height: 30px;
-    border: 2px solid white;
-    border-radius: 50%;
-    cursor: pointer;
-}
-
-.viuno-container.oransje {
-    background-color: var(--oransje);
-    color: var(--sand);
-    border-top: 10px solid var(--blue);
-}
-
-.viuno-container.blue {
-    background-color: var(--blue);
-    color: var(--sand);
-}
-
-.viuno-container.sand {
-    background-color: var(--sand);
-    color: var(--blue);
-}
-
-
-/* Common text color for the entire container */
-.viuno-container .viuno-heading {
-    color: inherit;
-}
-
-#blue-swatch, #sand-swatch, #oransje-swatch {
-    display: none;
-}
-
-#blue-swatch:checked + label::before,
-#sand-swatch:checked + label::before,
-#oransje-swatch:checked + label::before {
-    opacity: 1; /* Make the selected swatch fully opaque */
-}
-
-#blue-swatch + label::before,
-#sand-swatch + label::before,
-#oransje-swatch + label::before {
-    content: "";
-    display: inline-block;
-    width: 50px;
-    height: 50px;
-    border: 3px solid var(--blue);
-    border-radius: 500px;
-    margin-right: 10px;
-    margin-bottom: 40px;
-    vertical-align: middle;
-    transition: background-color 0.3s, border-color 0.3s;
-    opacity: 0.3; /* Set 0.5 opacity for unselected swatches */
-}
-
-#blue-swatch + label::before {
-    background-color: var(--blue);
-    color: var(--sand);
-    border-color: var(--oransje);
-}
-
-#sand-swatch + label::before {
-    background-color: var(--sand);
-    color: var(--blue);
-    border-color: var(--oransje);
-}
-
-#oransje-swatch + label::before {
-    background-color: var(--oransje);
-    color: var(--sand);
-}
-
-
-.viuno-bunn {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-        align-items: flex-end;
-    }
-
-.viuno-bunn img#viuno-logo {
-height: 40px;
-object-fit: contain;
-}
-
-.viuno-bunn svg {
-    fill: blue;
-    color: red;
-}
-
-.beta {
-font-size: 18px;
-    padding: 6px;
-    min-width: 60px;
-    color: var(--oransje);
-    background: var(--sand);
-    margin-left: 10px;
-    border-radius: 30px;
-    display: flex;
-    justify-content: center;
-}
-
-.title-wrapper {
-    display: flex;
-    align-items: center;
-}
-
-/* Custom styles for 9x16 size */
-.viuno-container.viuno-container-9x16 .viuno-heading {
-    font-size: 140px; /* Adjust the font size as needed */
-}
-
-.viuno-container.viuno-container-9x16 .viuno-ikon img {
-    height: 80px; /* Adjust the icon size as needed */
-}
-
-@media only screen and (max-width: 1024px) {
-.side-panel {
-    width: 300px;
-}
-.logo-wrapper {
-    padding: 25px 25px 25px 25px;
-}
-h2 {
-    font-size: 20px !important;
-}
-.beta {
-    font-size: 15px;
-    padding: 6px;
-    min-width: 48px;
-}
-.valg-wrapper {
-    padding: 25px;
-}
-    }
-    </style>
-
+    <link rel="stylesheet" href="styles.css">
 
 </head>
+
 <body>
-<div class="side-panel">
-    <div class="logo-wrapper">
-    <img src="assets/logo.svg" id="viuno-logo">
-    <div class=title-wrapper>
-        <h2>Designverktøy</h2><div class="beta">Beta</div>
-</div>
-</div>
-<div class="valg-wrapper">
-    <label class="input-label" for="text-input">Tekst</label>
-    <input type="text" id="text-input" class="input-field" placeholder="Overtidsmat, møtemat eller kickoff? Prøv vår catering" maxlength="55">
+    <div class="side-panel">
+        <div class="logo-wrapper">
+            <img src="assets/logo.svg" id="viuno-logo">
+            <div class=title-wrapper>
+                <h2>Designverktøy</h2>
+                <div class="beta">Beta</div>
+            </div>
+        </div>
+        <div class="valg-wrapper">
+            <label class="input-label" for="text-input">Tekst</label>
+            <input type="text" id="text-input" class="input-field"
+                placeholder="Overtidsmat, møtemat eller kickoff? Prøv vår catering" maxlength="55">
 
-    <label class="input-label" for="icon-input">Ikon</label>
-    <select id="icon-input" class="input-field">
-<option value="assets\ikoner\catering_sand.png">Catering</option>
-<option value="assets\ikoner\ved_sand.png">Ved</option>
-<option value="assets\ikoner\bilpleie_sand.png">Bilpleie</option>
-<option value="assets\ikoner\buss_sand.png">Buss</option>
-<option value="assets\ikoner\frakt_sand.png">Frakt</option>
-<option value="assets\ikoner\mekanikk-og-reparasjon_sand.png">Mekanikk og Reparasjon</option>
-<option value="assets\ikoner\pakking-og-montering_sand.png">Pakking og Montering</option>
-<option value="assets\ikoner\produktbestilling_sand.png">Produktbestilling</option>
-<option value="assets\ikoner\utegruppa_sand.png">Utegruppa</option>
-<option value="assets\ikoner\utleie_sand.png">Utleie</option>
-<option value="assets\ikoner\vaskeri_sand.png">Vaskeri</option>
-    </select>
-<label class="input-label" for="export-size">Størrelse</label>
-<select id="export-size" class="input-field">
-    <option value="1x1">Innlegg (1080x1080)</option>
-    <option value="9x16">Story (1080x1920)</option>
-</select>
-<div class="swatch-options">
-    <label class="input-label">Farger</label>
-    <div>
-        <input type="radio" name="swatch" value="blue" id="blue-swatch" checked> <!-- Added "checked" attribute -->
-        <label for="blue-swatch" class="swatch-color blue-swatch"></label>
+            <label class="input-label" for="icon-input">Ikon</label>
+            <select id="icon-input" class="input-field">
+                <option value="assets\ikoner\catering_sand.png">Catering</option>
+                <option value="assets\ikoner\ved_sand.png">Ved</option>
+                <option value="assets\ikoner\bilpleie_sand.png">Bilpleie</option>
+                <option value="assets\ikoner\buss_sand.png">Buss</option>
+                <option value="assets\ikoner\frakt_sand.png">Frakt</option>
+                <option value="assets\ikoner\mekanikk-og-reparasjon_sand.png">Mekanikk og Reparasjon</option>
+                <option value="assets\ikoner\pakking-og-montering_sand.png">Pakking og Montering</option>
+                <option value="assets\ikoner\produktbestilling_sand.png">Produktbestilling</option>
+                <option value="assets\ikoner\utegruppa_sand.png">Utegruppa</option>
+                <option value="assets\ikoner\utleie_sand.png">Utleie</option>
+                <option value="assets\ikoner\vaskeri_sand.png">Vaskeri</option>
+            </select>
+            <label class="input-label">Bilde</label>
+            <label for="background-upload" class="custom-upload-btn"><iconify-icon icon="ph:image-square-light"
+                    width="2em" height="2em" style="color: #1c172c"></iconify-icon> Last opp bilde</label>
+            <input type="file" id="background-upload" class="input-field" accept="image/*">
 
-        <input type="radio" name="swatch" value="oransje" id="oransje-swatch">
-        <label for="oransje-swatch" class="swatch-color oransje-swatch"></label>
+
+
+            <div class="swatch-options">
+                <label class="input-label">Farger</label>
+                <div>
+                    <input type="radio" name="swatch" value="blue" id="blue-swatch" checked>
+                    <!-- Added "checked" attribute -->
+                    <label for="blue-swatch" class="swatch-color blue-swatch"></label>
+
+                    <input type="radio" name="swatch" value="oransje" id="oransje-swatch">
+                    <label for="oransje-swatch" class="swatch-color oransje-swatch"></label>
+                </div>
+            </div>
+            <label class="input-label" for="export-size">Størrelse</label>
+            <select id="export-size" class="input-field">
+                <option value="1x1">Innlegg (1080x1080)</option>
+                <option value="9x16">Story (1080x1920)</option>
+            </select>
+
+            <button id="export-button">Eksporter</button>
+        </div>
     </div>
-</div>
-
-
-    <button id="export-button">Eksporter</button>
-</div>
-</div>
-<div class="grafikk-wrapper">
-<div class="viuno-container">
-    <h1 class="viuno-heading" id="viuno-heading">Overtidsmat, møtemat eller kickoff? Prøv vår catering</h1>
-    <div class=viuno-bunn>
-    <img src="assets/logo-black.svg" id="viuno-logo">
-    <div class="viuno-ikon">
-        <img src="assets\ikoner\catering_sand.png" id="viuno-icon">
+    <div class="grafikk-wrapper">
+        <div class="viuno-container">
+            <h1 class="viuno-heading" id="viuno-heading">Overtidsmat, møtemat eller kickoff? Prøv vår catering</h1>
+            <div class=viuno-bunn>
+                <img src="assets/logo-black.svg" id="viuno-logo">
+                <div class="viuno-ikon">
+                    <img src="assets\ikoner\catering_sand.png" id="viuno-icon">
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-</div>
-</div>
-<script>
-// Add an event listener for swatch selection
-document.querySelectorAll('input[name="swatch"]').forEach(input => {
-    input.addEventListener('change', () => {
-        const selectedSwatch = document.querySelector('input[name="swatch"]:checked').value;
-        viunoContainer.className = `viuno-container ${selectedSwatch}`;
-    });
-});
-
-const textInput = document.getElementById('text-input');
-const iconInput = document.getElementById('icon-input');
-const viunoContainer = document.querySelector('.viuno-container');
-const viunoHeading = document.getElementById('viuno-heading');
-const viunoIcon = document.getElementById('viuno-icon');
-const exportButton = document.getElementById('export-button');
-const exportSizeInput = document.getElementById('export-size');
-
-exportSizeInput.addEventListener('change', () => {
-    const selectedSize = exportSizeInput.value;
-
-    // Reset font size and icon size to their original values
-    viunoHeading.style.fontSize = '60px';
-    viunoIcon.style.height = '160px';
-
-    // Update the viuno-container size based on the selected option
-    if (selectedSize === '1x1') {
-        viunoContainer.style.width = '540px';
-        viunoContainer.style.height = '540px';
-    } else if (selectedSize === '9x16') {
-        viunoContainer.style.width = '540px';
-        viunoContainer.style.height = '960px';
-
-        // Adjust font size and icon size for 9x16 size
-        viunoHeading.style.fontSize = '78px';
-        viunoHeading.style.lineHeight = '84px';
-        viunoIcon.style.height = '225px';
-    }
-});
-
-textInput.addEventListener('input', () => {
-    viunoHeading.textContent = textInput.value;
-});
-
-iconInput.addEventListener('change', () => {
-    viunoIcon.src = iconInput.value;
-});
-
-exportButton.addEventListener('click', () => {
-    let exportWidth, exportHeight;
-
-    if (exportSizeInput.value === '1x1') {
-        exportWidth = 540;
-        exportHeight = 540;
-    } else if (exportSizeInput.value === '9x16') {
-        exportWidth = 540;
-        exportHeight = 960;
-    }
-
-    // Adjust the container's size based on the selected export size
-    viunoContainer.style.width = exportWidth + 'px';
-    viunoContainer.style.height = exportHeight + 'px';
-
-    // Wait for the layout to update before capturing the container
-    setTimeout(() => {
-        html2canvas(viunoContainer).then(canvas => {
-            const dataURL = canvas.toDataURL('image/png');
-            const a = document.createElement('a');
-            a.href = dataURL;
-            a.download = 'viuno.png';
-            a.click();
-        });
-
-
-    }, 100);
-});
-
-
-</script>
 </body>
-</html>
+<script src="script.js"></script>
 
+</html>
