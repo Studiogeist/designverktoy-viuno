@@ -83,6 +83,12 @@ body {
   background-color: lightgrey;
 }
 
+@media only screen and (max-width: 1024px) {
+  body {
+    zoom: 75%;
+  }
+}
+
 /* Hide the actual file input */
 #background-upload {
   display: none;
