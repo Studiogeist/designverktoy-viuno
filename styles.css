@@ -48,7 +48,6 @@
   display: flex;
   background: white;
   color: var(--blue);
-  gap: 5px;
   width: 450px;
   flex-direction: column;
   height: 100vh;
@@ -67,7 +66,7 @@
 }
 
 input {
-  margin-top: 8px;
+
 }
 
 .input-field {
@@ -108,7 +107,6 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin-bottom: 16px;
 }
 
 /* Add hover effects */
@@ -127,7 +125,7 @@ input,
   font-size: 16px;
   font-weight: 400;
   line-height: 1.5;
-  margin-bottom: 24px;
+  margin-bottom: 12px;
   color: #212529;
   background-color: #fff;
   background-clip: padding-box;
@@ -191,6 +189,7 @@ h2 {
   padding: 16px 24px;
   display: flex;
   flex-direction: column;
+  gap: 12px;
 }
 
 h2 {
@@ -208,7 +207,6 @@ h2 {
 .swatch-options {
   display: flex;
   flex-direction: column;
-  margin-bottom: 24px;
 }
 
 .swatch-color {
@@ -255,14 +253,15 @@ h2 {
 #sand-swatch + label::before,
 #oransje-swatch + label::before {
   content: "";
-  display: inline-block;
-  width: 24px;
-  height: 24px;
-  border: 2px solid var(--blue);
-  border-radius: 500px;
-  vertical-align: middle;
-  transition: background-color 0.3s, border-color 0.3s;
-  opacity: 0.3;
+    display: inline-block;
+    width: 48px;
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    border: 2px solid var(--blue);
+    border-radius: 500px;
+    vertical-align: middle;
+    transition: background-color 0.3s, border-color 0.3s;
+    opacity: 0.3;
   /* Set 0.5 opacity for unselected swatches */
 }
 
@@ -357,4 +356,51 @@ select {
   -webkit-appearance: none; /* Remove default styling */
   -moz-appearance: none;
   appearance: none;
+}
+
+
+/* Container for the switch */
+.switch {
+  display: inline-flex;
+  align-items: center;
+  font-size: 14px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  gap: 8px;
+}
+
+.switch input {
+  display: none; /* Hide the checkbox */
+}
+
+/* The slider (switch) */
+.slider {
+  position: relative;
+  width: 40px;
+  height: 20px;
+  background-color: #ccc;
+  border-radius: 34px;
+  transition: 0.4s;
+}
+
+/* The circle inside the slider */
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.4s;
+}
+
+/* When checked, slide the circle to the right and change color */
+input:checked + .slider {
+  background-color: var(--oransje); /* Custom color when checked */
+}
+
+input:checked + .slider:before {
+  transform: translateX(20px); /* Move the circle */
 }

@@ -26,10 +26,24 @@
             </div>
         </div>
         <div class="valg-wrapper">
+
+            
+
+            
+ 
+            <div class="text">
             <label class="input-label" for="text-input">Tekst</label>
             <input type="text" id="text-input" class="input-field"
                 placeholder="Overtidsmat, møtemat eller kickoff? Prøv vår catering" maxlength="55">
+                <label class="switch">
+                    <input type="checkbox" id="toggle-text" checked>
+                    <span class="slider"></span>
+                    Vis Tekst
+                </label>
+                </div>
 
+
+                <div class="ikon">
             <label class="input-label" for="icon-input">Ikon</label>
             <select id="icon-input" class="input-field">
                 <option value="assets\ikoner\catering_sand.png">Catering</option>
@@ -44,6 +58,14 @@
                 <option value="assets\ikoner\utleie_sand.png">Utleie</option>
                 <option value="assets\ikoner\vaskeri_sand.png">Vaskeri</option>
             </select>
+            <label class="switch">
+                <input type="checkbox" id="toggle-icon" checked>
+                <span class="slider"></span>
+                Vis Ikon
+            </label>
+        </div>
+
+        <div class="bilde">
             <label class="input-label">Bilde</label>
 
             <label for="background-upload" class="custom-upload-btn">
@@ -52,10 +74,10 @@
                 Last opp bilde
             </label>
             <input type="file" id="background-upload" class="input-field" accept="image/*">
+</div>
 
 
-
-
+<div class="swatches">
             <div class="swatch-options">
                 <label class="input-label">Farger</label>
                 <div class="swatch-wrapper">
@@ -67,11 +89,15 @@
                     <label for="oransje-swatch" class="swatch-color oransje-swatch"></label>
                 </div>
             </div>
+        </div>
+
+        <div class="format">
             <label class="input-label" for="export-size">Størrelse</label>
             <select id="export-size" class="input-field">
                 <option value="1x1">Innlegg (1080x1080)</option>
                 <option value="9x16">Story (1080x1920)</option>
             </select>
+        </div>
 
             <button id="export-button">Eksporter</button>
 

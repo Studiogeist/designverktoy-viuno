@@ -150,3 +150,23 @@ backgroundUploadInput.addEventListener('change', (event) => {
 
     reader.readAsDataURL(file);
 });
+
+
+const toggleTextCheckbox = document.getElementById('toggle-text');
+const toggleIconCheckbox = document.getElementById('toggle-icon');
+
+toggleTextCheckbox.addEventListener('change', () => {
+    if (toggleTextCheckbox.checked) {
+        viunoHeading.style.opacity = '1';  // Set opacity to 1 to show
+    } else {
+        viunoHeading.style.opacity = '0';  // Set opacity to 0 to hide
+    }
+});
+
+toggleIconCheckbox.addEventListener('change', () => {
+    if (toggleIconCheckbox.checked) {
+        viunoIcon.style.opacity = '1';  // Set opacity to 1 to show
+    } else {
+        viunoIcon.style.opacity = '0';  // Set opacity to 0 to hide
+    }
+});
