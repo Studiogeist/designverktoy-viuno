@@ -1,0 +1,360 @@
+:root {
+  --oransje: #d14900;
+  --grey: #444444;
+  --blue: #35435a;
+  --sand: #f1dfbc;
+  --lyssand: #f6f2e9;
+}
+
+* {
+  font-family: Poppins;
+}
+
+.viuno-container {
+  display: flex;
+  border-top: 10px solid var(--oransje);
+  padding: 50px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  background: var(--blue);
+  width: 540px;
+  height: 540px;
+  color: var(--sand);
+  overflow: hidden;
+}
+
+.viuno-heading {
+  font-family: "Poppins";
+  font-style: normal !important;
+  font-weight: 300 !important;
+  font-size: 60px;
+  line-height: 75px;
+  word-wrap: break-word;
+  width: 500px;
+}
+
+.viuno-ikon img {
+  height: 160px;
+}
+
+.viuno-ikon {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.side-panel {
+  display: flex;
+  background: white;
+  color: var(--blue);
+  gap: 5px;
+  width: 450px;
+  flex-direction: column;
+  height: 100vh;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+}
+
+.input-label {
+  font-size: 12px;
+  line-height: 2em;
+  padding-bottom: 4px;
+}
+
+.swatch-wrapper {
+  margin-top: 4px;
+}
+
+input {
+  margin-top: 8px;
+}
+
+.input-field {
+  width: 100%;
+  padding: 12px;
+}
+
+#text-input {
+  width: -webkit-fill-available;
+}
+
+body {
+  display: flex;
+  margin: 0;
+  background-color: lightgrey;
+}
+
+/* Hide the actual file input */
+#background-upload {
+  display: none;
+}
+
+/* Style the label as a button */
+.custom-upload-btn {
+  display: inline-block;
+  border: 1px dashed var(--blue);
+  color: var(--blue);
+  font-size: 16px;
+  padding: 16px 32px;
+  text-align: center;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: -webkit-fill-available;
+  height: 100px;
+  gap: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+/* Add hover effects */
+.custom-upload-btn:hover {
+  background-color: lightgrey; /* Slightly brighter orange on hover */
+}
+
+/* Add focus styles for accessibility */
+.custom-upload-btn:focus {
+  outline: 2px solid var(--blue);
+}
+
+/* Create a CSS class to apply common styles to form elements */
+input,
+.input-field {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  margin-bottom: 24px;
+  color: #212529;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid darkgrey;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+/* Add styles for when the element is focused */
+input:focus {
+  color: #212529;
+  background-color: #fff;
+  border-color: #86b7fe;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
+}
+
+button {
+  padding: 20px;
+  background-color: var(--oransje);
+  border: 0px;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+  transition: 0.4s;
+  outline: 2px solid transparent;
+}
+
+button:hover {
+  box-shadow: -3px 10px 53px -20px rgba(209, 73, 0, 0.88);
+  -webkit-box-shadow: -3px 10px 53px -20px rgba(209, 73, 0, 0.88);
+  -moz-box-shadow: -3px 10px 53px -20px rgba(209, 73, 0, 0.88);
+  cursor: pointer;
+  transition: 0.4s;
+  outline: 2px solid black;
+}
+
+h2 {
+  font-family: "Poppins";
+  font-style: normal !important;
+  font-weight: 500 !important;
+  font-size: 24px !important;
+  line-height: 40px !important;
+  color: var(--blue);
+}
+
+.logo-wrapper img {
+  height: 16px;
+  color: inherit;
+}
+
+.logo-wrapper {
+  display: flex;
+  padding: 24px;
+  gap: 4px;
+  border-bottom: 1px solid lightgrey;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.valg-wrapper {
+  padding: 16px 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+h2 {
+  margin: 0;
+}
+
+.grafikk-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+/* Swatch color styles */
+.swatch-options {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 24px;
+}
+
+.swatch-color {
+  border: 2px solid white;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.viuno-container.oransje {
+  background-color: var(--oransje);
+  color: var(--sand);
+  border-top: 10px solid var(--blue);
+}
+
+.viuno-container.blue {
+  background-color: var(--blue);
+  color: var(--sand);
+}
+
+.viuno-container.sand {
+  background-color: var(--sand);
+  color: var(--blue);
+}
+
+/* Common text color for the entire container */
+.viuno-container .viuno-heading {
+  color: inherit;
+}
+
+#blue-swatch,
+#sand-swatch,
+#oransje-swatch {
+  display: none;
+}
+
+#blue-swatch:checked + label::before,
+#sand-swatch:checked + label::before,
+#oransje-swatch:checked + label::before {
+  opacity: 1;
+  /* Make the selected swatch fully opaque */
+}
+
+#blue-swatch + label::before,
+#sand-swatch + label::before,
+#oransje-swatch + label::before {
+  content: "";
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--blue);
+  border-radius: 500px;
+  vertical-align: middle;
+  transition: background-color 0.3s, border-color 0.3s;
+  opacity: 0.3;
+  /* Set 0.5 opacity for unselected swatches */
+}
+
+#blue-swatch + label::before {
+  background-color: var(--blue);
+  color: var(--sand);
+  border-color: var(--oransje);
+}
+
+#sand-swatch + label::before {
+  background-color: var(--sand);
+  color: var(--blue);
+  border-color: var(--oransje);
+}
+
+#oransje-swatch + label::before {
+  background-color: var(--oransje);
+  color: var(--sand);
+}
+
+.viuno-bunn {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: flex-end;
+}
+
+.viuno-bunn img#viuno-logo {
+  height: 40px;
+  object-fit: contain;
+}
+
+.viuno-bunn svg {
+  fill: blue;
+  color: red;
+}
+
+.beta {
+  font-size: 16px;
+  padding: 4px 12px;
+  color: var(--oransje);
+  background: var(--sand);
+  margin-left: 10px;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.title-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+/* Custom styles for 9x16 size */
+.viuno-container.viuno-container-9x16 .viuno-heading {
+  font-size: 140px;
+  /* Adjust the font size as needed */
+}
+
+.viuno-container.viuno-container-9x16 .viuno-ikon img {
+  height: 80px;
+  /* Adjust the icon size as needed */
+}
+
+@media only screen and (max-width: 1024px) {
+  .side-panel {
+    width: 300px;
+  }
+
+  .logo-wrapper {
+    padding: 25px 25px 25px 25px;
+  }
+
+  h2 {
+    font-size: 20px !important;
+  }
+
+  .beta {
+    font-size: 15px;
+    padding: 6px;
+    min-width: 48px;
+  }
+
+  .valg-wrapper {
+    padding: 25px;
+  }
+}
+
+input[type="text"],
+input[type="file"],
+select {
+  -webkit-appearance: none; /* Remove default styling */
+  -moz-appearance: none;
+  appearance: none;
+}
